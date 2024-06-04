@@ -1,10 +1,12 @@
 import './App.css';
 import img1 from './images/R.jpg'
+let name= "SIT";
 
 function App() {
   return (
     <>
       <header>
+        <h1>{name}</h1>
         <nav>
           <ul>
             <li>Home</li>
