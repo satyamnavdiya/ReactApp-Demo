@@ -33,6 +33,16 @@ export default function TextForm(props) {
         window.speechSynthesis.speak(newText);
     }
 
+    const handleCopy = () =>{
+        var newText = document.getElementById('exampleFormControlTextarea1');
+        newText.select();
+        navigator.clipboard.writeText(newText.value);
+    }
+
+    const handleRemoveSpace = () =>{
+        let newText = text.split(/[ ] + /);
+        setText(newText.join(" "));
+    }
 
     return (
         <div>
@@ -42,8 +52,10 @@ export default function TextForm(props) {
                 
                 <button className='btn btn-outline-success my-3' onClick={handleUpChange}>Convert to Upper Case</button>
                 <button className='btn btn-outline-success my-3 mx-3' onClick={handleLoChange}>Convert to Lower Case</button>
-                <button className='btn btn-outline-success my-3 mx-3' onClick={handleSpeak}>Speak</button>
+                <button className='btn btn-outline-success my-3' onClick={handleSpeak}>Speak</button>
                 <button className='btn btn-outline-success my-3 mx-3' onClick={handleClear}>Clear</button>
+                <button className='btn btn-outline-success my-3' onClick={handleCopy}>Copy Text</button>
+                <button className='btn btn-outline-success my-3 mx-3' onClick={handleRemoveSpace}>Remove Extra Space</button>
             </div>
 
             <div className="container">   
