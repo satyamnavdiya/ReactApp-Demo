@@ -6,7 +6,7 @@ function App() {
   return (
     <> 
       <Navbar title="SIT" aboutText="Contact Us" />
-      <AboutUs />
+      <AboutUs heading="About Us" />
     </>
   );
 }
