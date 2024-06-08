@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 export default function Navbar(props) {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+            <nav className={`navbar navbar-expand-lg bg-${props.mode} navbar-${props.mode} `}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">{props.title}</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,8 +24,9 @@ export default function Navbar(props) {
                             </li>
                         </ul>
                         <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-warning" type="submit">Search</button>
+                            <div className="form-check form-switch">
+                                <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode} />{props.mode}
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -34,13 +35,13 @@ export default function Navbar(props) {
     )
 }
 
-Navbar.propTypes={
-    title : PropTypes.string.isRequired,
-    aboutText : PropTypes.string
+Navbar.propTypes = {
+    title: PropTypes.string.isRequired,
+    aboutText: PropTypes.string
 }
 
-Navbar.defaultProps={
-    title : "Set Your Title Here",
-    aboutText : "set your text here",
+Navbar.defaultProps = {
+    title: "Set Your Title Here",
+    aboutText: "set your text here",
 
 }
