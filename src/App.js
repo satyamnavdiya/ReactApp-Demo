@@ -1,23 +1,33 @@
+import { useCallback, useState } from 'react';
 import './App.css';
-import img1 from './images/R.jpg'
-let name= "SIT";
+import Navbar from './components/Navbar';
+import Textarea from './components/Textarea';
 
 function App() {
+  const [mode, setMode] = useState("light");
+
+  const [btntext, setBtnText] = useState("Enable Dark Mode")
+
+
+  const toggleMode = () => {
+    if (mode === 'light') {
+      setMode('dark');
+      document.body.style.background = 'black';
+      document.body.style.color = 'white';
+      setBtnText("Enable Light Mode")
+    } else {
+      // (mode !=== 'light' || mode === 'dark')
+      setMode('light')
+      document.body.style.background = 'white';
+      document.body.style.color = 'black';
+      setBtnText("Enable Dark Mode")
+    }
+  }
+
   return (
     <>
-      <header>
-        <h1>{name}</h1>
-        <nav>
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact Us</li>
-          </ul>
-        </nav>
-
-        <p className="lorem-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, quidem perspiciatis repudiandae ad impedit ea. Dolorum omnis pariatur possimus, dignissimos temporibus necessitatibus, dolor tempore alias voluptatibus illum aliquam error doloremque?</p>
-        <img src={img1} alt="img" className="img1" />
-      </header>
+      <Navbar heading="SIT" aboutText="About Us" mode= {mode} btntext={btntext} toggleMode={toggleMode} />
+      <Textarea title="Enter Text to Analyse Here"  />
     </>
   );
 }
